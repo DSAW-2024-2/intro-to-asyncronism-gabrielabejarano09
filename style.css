@@ -277,7 +277,7 @@ button:hover {
 }
 
 
-@media (max-width: 958px) {
+@media (max-width: 800px) {
 
     .section-filters {
         flex-direction: column;
