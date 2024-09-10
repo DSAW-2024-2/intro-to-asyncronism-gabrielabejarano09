@@ -1,0 +1,330 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+       -moz-box-sizing: border-box;
+}
+
+body{
+    background-color: #ccecff;
+}
+header {
+    display: flex;
+    justify-content: center;
+}
+
+.main-header {
+    height: 8rem;
+    
+}
+
+main {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+   
+}
+
+.pokeball {
+    object-fit: cover;
+    height: 5rem;
+    align-self: center;
+}
+
+h1 {
+    font-family: "Grandstander";
+    font-optical-sizing: auto;
+    font-style: normal;
+    text-transform: uppercase;
+    font-weight: 400;
+    font-size: 35px;
+}
+
+.bold {
+    font-weight: 600;
+    letter-spacing: 2px;
+}
+
+.section-filters {
+    display: flex;
+    margin: 0 2rem;
+    max-width: 1040px;
+    width: 100vw;
+}
+
+.pikachu-detective {
+    height: 19rem;
+}
+
+aside {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex: 1;
+}
+
+.filters {
+    flex: 2;
+    padding-top: 4rem;
+}
+
+form {
+    font-family: "Grandstander";
+    font-optical-sizing: auto;
+    font-style: normal;
+    text-transform: uppercase;
+    font-weight: 300;
+    font-size: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+    margin-top: 2rem;
+    margin-left: 1rem;
+    margin-right: 1rem;
+    letter-spacing: 4px;
+}
+
+label {
+    margin-bottom: 5px;
+    margin-right: 0.5rem;
+}
+
+input[type="text"] {
+    padding: 5px;
+    border: 2px solid black;
+    border-radius: 5px;
+    font-size: 16px;
+    width: 100%;
+    max-width: 400px;
+    margin-right: 1rem;
+}
+
+input[name="answer-range1"],
+input[name="answer-range2"] {
+    width: 80px;
+    margin: 5px 5px;
+}
+
+button {
+    background-color: #ffd100;
+    border: 2px solid black;
+    border-radius: 5px;
+    padding: 10px 10px;
+    font-family: "Grandstander";
+    font-optical-sizing: auto;
+    font-style: normal;
+    font-weight: 300;
+    font-size: 20px;
+    cursor: pointer;
+    letter-spacing: 4px;
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+}
+
+button:hover {
+    background-color: black;
+    color: white;
+}
+
+.line {
+    background-color: black;
+    width: 15px;
+    height: 2px;
+    border-radius: 30px;
+}
+
+.form-part1 {
+    display: flex;
+    align-items: center;
+    height:1rem;
+}
+
+.form-part2 {
+    display: flex;
+    align-items: center;
+    height: 1rem;
+    margin-top: 3rem;
+}
+
+.blob {
+    width: 4rem;
+    height: 3rem;
+    margin-left: 1rem;
+}
+
+.section-cards {
+    display: flex;
+    flex-wrap: wrap;
+    width: 100vw;
+    justify-content: space-evenly;
+    margin-left: 5rem;
+    margin-right: 5rem;
+    margin-top: 1rem;
+    max-width: 1500px;
+    
+}
+
+.card {
+    
+    display: none;
+    height: 15rem;
+    width: 30%;
+    font-family: "Grandstander";
+    font-optical-sizing: auto;
+    font-style: normal;
+    text-transform: uppercase;
+    font-weight: 400;
+    font-size: 25px;
+    margin-top: 1rem;
+    letter-spacing: 4px;
+}
+
+.card:hover {
+    box-shadow: 10px 10px 4px gray;
+}
+
+.card-image {
+    flex: 3;
+    border:2px groove black;
+    border-right: none;
+    background-color: #F2F2F2;
+    position: relative;
+}
+
+
+.card-info {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    flex: 4;
+    border:2px groove black;
+    padding:1.5rem;
+    background-color: white;
+}
+
+.card-pokemon {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    position: relative;
+    top:0%
+    
+}
+
+.card-number{
+    display: flex;
+    justify-content: center;
+    width: 75%;
+    border:2px groove black;
+    border-left: none;
+    border-top: none;
+    margin: 0;
+    position: absolute;
+    padding:0.5rem;
+    background-color: white;
+    z-index: 1; 
+}
+.type-container{
+    display: flex;
+    justify-content: space-around;
+}
+.type-square{
+    background-color: #88E29E;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width:fit-content;
+    font-size: 20px;
+    padding:0.2rem;
+    border:2px groove black;
+    letter-spacing: 4px;
+    margin-bottom: 1rem;
+}
+
+.name-container{
+    display: flex;
+}
+
+.weight-container{
+    display: flex;
+}
+
+#back-button{
+    display: none;
+}
+
+.end-page{
+    display: none;
+    height: 7rem;
+}
+
+
+/* Media Queries for responsiveness */
+@media (max-width: 768px) {
+    h1 {
+        font-size: 25px;
+    }
+
+    .section-filters {
+        flex-direction: column;
+        align-items: center;
+        margin-left: 1rem;
+        margin-right: 1rem;
+    }
+
+    .form-part2 {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    input[name="answer-range1"],
+    input[name="answer-range2"] {
+        width: 100%;
+        max-width: 200px;
+        margin: 5px 0;
+    }
+
+    .filters,
+    aside {
+        width: 100%;
+        margin: 0;
+    }
+
+    .pikachu-detective {
+        display: none;
+    }
+}
+
+
+
+
+
+@media (max-width: 480px) {
+    h1 {
+        font-size: 20px;
+    }
+
+    .section-filters {
+        margin: 0 1rem;
+    }
+
+    .pokeball {
+        height: 3rem;
+    }
+
+    .pikachu-detective {
+        display: none;
+    }
+
+    input[type="text"] {
+        max-width: 100%;
+    }
+
+    input[name="answer-range1"],
+    input[name="answer-range2"] {
+        width: 100%;
+    }
+}
