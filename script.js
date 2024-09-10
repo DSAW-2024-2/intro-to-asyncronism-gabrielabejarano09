@@ -1,7 +1,9 @@
 const load_button = document.getElementById('load-button');
 const back_button = document.getElementById('back-button');
-const search_button = document.getElementById('search-button');
-const search_form = document.getElementById('search-form');
+const search_button_name = document.getElementById('search-button-name');
+const search_button_id = document.getElementById('search-button-id');
+const search_form_name = document.getElementById('search-form-name');
+const search_form_id = document.getElementById('search-form-id');
 const end_page = document.getElementById('end-page');
 let countCards = 21;
 
@@ -20,37 +22,45 @@ load_button.addEventListener("click", function () {
 
 
 
-search_form.addEventListener('submit', function (event) {
+search_form_name.addEventListener('submit', async function (event) {
     event.preventDefault();
 
     const name = document.getElementById('name-form').value;
+
+    if (name) {
+        await chargeSearchedByName(name); 
+    }
+
+});
+
+search_form_id.addEventListener('submit', function (event)  {
+    event.preventDefault();
+
+
     const range1 = parseInt(document.getElementById('answer-range1').value, 10);
     const range2 = parseInt(document.getElementById('answer-range2').value, 10);
 
 
-    if (name && isNaN(range1) && isNaN(range2)) {
-        chargeSearchedByName(name);
-    }
 
-
-    if (!name && !isNaN(range1) && isNaN(range2)) {
-        removeElements();
-        chargeSearchedByOneId(range1);
-    }
-
-    if (!name && !isNaN(range1) && !isNaN(range2)) {
+    if ( !isNaN(range1) && !isNaN(range2)) {
         removeElements();
         for (let i = range1; i <= range2; i++) {
             chargeSearchedByOneId(i);
         }
     }
 
-    if (!name && isNaN(range1) && !isNaN(range2)) {
+    if (isNaN(range1) && !isNaN(range2)) {
         removeElements();
         for (let i = 1; i <= range2; i++) {
             chargeSearchedByOneId(i);
         }
     }
+
+    if (!isNaN(range1) && isNaN(range2)) {
+        removeElements();
+        chargeSearchedByOneId(range1);
+    }
+
 });
 
 back_button.addEventListener('click', function () {
@@ -372,6 +382,5 @@ function chargeSearchedByOneId(id) {
     const cards = document.querySelectorAll(".card");
     const lastCard = cards[cards.length - 1];
     changeContentOne(id, lastCard);
-
 }
 

@@ -24,19 +24,22 @@
                     <h1>Search your <span class="bold"> favorite</span> pokemon</h1>
                     <img class="blob" src="blob.png" alt="Blob">
                 </header>
-                <form id="search-form" action="buscar" method="GET">
+                <form id="search-form-name" action="buscar" method="GET">
                     <div class="form-part1">
                         <label>Name:</label>
                         <input type="text" name="answer-name" id="name-form">
-                        <button type="submit reset" id="search-button">search</button>
+                        <button type="submit reset" id="search-button-name">search</button>
                     </div>
+                </form>
+                <form id="search-form-id" action="buscar" method="GET">
                     <div class="form-part2">
                         <label>Number Range:</label>
                         <input type="text" id="answer-range1" name="answer-range1" placeholder="1">
                         <div class=" line"></div>
                         <input type="text" id="answer-range2" name="answer-range2" placeholder="1125">
-                        <button type="submit reset" id="search-button">search</button>
+                        <button type="submit reset" id="search-button-id">search</button>
                     </div>
+                </form>
                     <div class="filter-buttons">
                         <button id="back-button">Back</button>
                     </div>
@@ -45,7 +48,6 @@
             <aside>
                 <img class="pikachu-detective" src="pikachu.png" alt="Pikachu detective">
             </aside>
-            </form>
         </section>
         <section class="section-cards" id="section">
 
@@ -81,7 +83,7 @@
         <button id="load-button">Load more...</button>
     </main>
 
-    <footer class="end-page"> </footer>
+    <footer id="end-page"> </footer>
     <script src="script.js"></script>
 </body>
 

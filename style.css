@@ -40,6 +40,7 @@ h1 {
     text-transform: uppercase;
     font-weight: 400;
     font-size: 35px;
+    margin-bottom: 2rem;
 }
 
 .bold {
@@ -81,7 +82,7 @@ form {
     flex-direction: column;
     align-items: center;
     gap: 4px;
-    margin-top: 2rem;
+    margin-top: 1rem;
     margin-left: 1rem;
     margin-right: 1rem;
     letter-spacing: 4px;
@@ -256,45 +257,56 @@ button:hover {
     display: none;
 }
 
-.end-page{
+#end-page{
     display: none;
     height: 7rem;
 }
 
+.filter-buttons{
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    height: min-content;
+}
 
-/* Media Queries for responsiveness */
-@media (max-width: 768px) {
-    h1 {
-        font-size: 25px;
+
+@media (max-width: 1300px) {
+    .card {
+        width: 45%; 
     }
+}
 
+
+@media (max-width: 958px) {
     .section-filters {
         flex-direction: column;
         align-items: center;
-        margin-left: 1rem;
-        margin-right: 1rem;
+        margin: 0 1rem;
     }
 
-    .form-part2 {
-        flex-direction: column;
-        align-items: center;
+    .section-cards{
+        max-width: 768px;
+        width: 80%;
     }
-
-    input[name="answer-range1"],
-    input[name="answer-range2"] {
+    .card {
         width: 100%;
-        max-width: 200px;
-        margin: 5px 0;
+        margin: 1rem 0;
     }
 
-    .filters,
-    aside {
-        width: 100%;
-        margin: 0;
+    .pokeball {
+        height: 3rem;
+    }
+
+    input[type="text"] {
+        max-width: 100%;
     }
 
     .pikachu-detective {
         display: none;
+    }
+
+    h1 {
+        font-size: 25px;
     }
 }
 
@@ -303,28 +315,55 @@ button:hover {
 
 
 @media (max-width: 480px) {
-    h1 {
-        font-size: 20px;
+    .card {
+        width: 100%;
+        margin: 1rem 0;
+        font-size: medium;
     }
+
+   .card-image{
+    flex: 2;
+   }
+
+   .card-info{
+    flex:2;
+   }
+
+   .type-square{
+    font-size: medium;
+   }
+
+   label{
+    font-size: medium;
+   }
+
+   button{
+    font-size: medium;
+    width: fit-content;
+   }
 
     .section-filters {
-        margin: 0 1rem;
+        margin: 0 0.5rem;
     }
 
-    .pokeball {
-        height: 3rem;
-    }
-
-    .pikachu-detective {
-        display: none;
+    h1 {
+        font-size: 20px;
     }
 
     input[type="text"] {
         max-width: 100%;
     }
+}
 
-    input[name="answer-range1"],
-    input[name="answer-range2"] {
-        width: 100%;
+@media (max-width: 480px) {
+    .card{
+        flex-direction: column;
+        height:fit-content;
+    }
+
+    .card-image{
+        border-bottom: 0px;
+        border-right:2px groove black;
+
     }
 }
