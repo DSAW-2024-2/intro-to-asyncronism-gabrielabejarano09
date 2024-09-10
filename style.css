@@ -278,6 +278,7 @@ button:hover {
 
 
 @media (max-width: 958px) {
+
     .section-filters {
         flex-direction: column;
         align-items: center;
@@ -314,7 +315,7 @@ button:hover {
 
 
 
-@media (max-width: 480px) {
+@media (max-width: 500px) {
     .card {
         width: 100%;
         margin: 1rem 0;
@@ -355,7 +356,7 @@ button:hover {
     }
 }
 
-@media (max-width: 480px) {
+@media (max-width: 400px) {
     .card{
         flex-direction: column;
         height:fit-content;
@@ -365,5 +366,33 @@ button:hover {
         border-bottom: 0px;
         border-right:2px groove black;
 
+    }
+
+    
+    input[type="text"] {
+        width: 100%;
+    }
+    
+    input[name="answer-range1"],
+    input[name="answer-range2"] {
+        width: 50px;
+        margin: 5px 5px;
+    }
+
+    button{
+        width: min-content;
+        font-size: 12px;
+
+    }
+
+    .blob{
+        width: 2rem;
+        height: 2rem;
+    }
+
+    h1{
+        margin:0px;
+        font-size:25px ;
+        margin-left: 1rem;
     }
 }
