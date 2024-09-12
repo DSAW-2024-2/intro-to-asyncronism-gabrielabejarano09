@@ -151,7 +151,7 @@ closeModal.addEventListener('click', () => {
     hpBar.style.width = `${0}%`;
     attackBar.style.width = `${0}%`;
     defenseBar.style.width = `${0}%`;
-
+    heightElement.textContent = "";
 });
 
 

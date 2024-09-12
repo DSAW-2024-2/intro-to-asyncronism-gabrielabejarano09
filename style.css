@@ -488,6 +488,7 @@ button:hover {
         width:70%;
         border:0px;
         border:2px groove black;
+        height: 0%;
         margin-top: 2rem;
     }
 }
@@ -533,4 +534,8 @@ button:hover {
     }
 }
 
-
+@media (min-width:500px )and (max-width: 680px) {
+    .modal-content{
+        width: 90%;
+    }
+}
