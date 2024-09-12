@@ -36,13 +36,13 @@
                         <label>Number Range:</label>
                         <input type="text" id="answer-range1" name="answer-range1" placeholder="1">
                         <div class=" line"></div>
-                        <input type="text" id="answer-range2" name="answer-range2" placeholder="1125">
+                        <input type="text" id="answer-range2" name="answer-range2" placeholder="1025">
                         <button type="submit reset" id="search-button-id">search</button>
                     </div>
                 </form>
-                    <div class="filter-buttons">
-                        <button id="back-button">Back</button>
-                    </div>
+                <div class="filter-buttons">
+                    <button id="back-button">Back</button>
+                </div>
 
             </section>
             <aside>
@@ -74,10 +74,60 @@
                         <p id="textWeight"></p>
                     </div>
                 </div>
-
             </div>
 
+            <div id="modal-card" class="modal">
+                <div class="modal-content">
+                    <span id="close-modal" class="close">&times;</span>
+                    <div class="modal-card" id="modalCard">
+                        <div class="modal-card-image card-image">
+                            <div class="card-number modal-card-number">
+                                <span class="bold" id="modalTextCardNumber">#0001 </span>
+                            </div>
+                            <img class="card-pokemon" id="modalCardImage" alt="Pokemon image">
+                        </div>
+                        <div class="card-info modal-card-info">
+                            <div class="name-container">
+                                <span class="bold">Name: </span>
+                                <p id="modalTextName"></p>
+                            </div>
+                            <span class="bold">Type: </span>
+                            <div class="type-container modal-type-container" id="modalTypeContainer"></div>
+                            <div class="weight-container">
+                                <span class="bold">Weight: </span>
+                                <p id="modalTextWeight"></p>
+                            </div>
+                            <div class="height-container weight-container">
+                                <span class="bold">Height: </span>
+                                <p id="modalTextHeight"></p>
+                            </div>
+                        </div>
+                        <div class="stats-container">
+                            <span class="bold">Stats: </span>
 
+                            <div class="stat-bar-container">
+                                <p>HP:</p>
+                                <div class="stat-bar">
+                                    <div class="stat-bar-fill hp"> </div>
+                                </div>
+                            </div>
+                            <div class="stat-bar-container">
+                                <p>ATTACK:</p>
+                                <div class="stat-bar ">
+                                    <div class="stat-bar-fill attack"> </div>
+                                </div>
+                            </div>
+                            <div class="stat-bar-container ">
+                                <p>DEFENSE:</p>
+                                <div class="stat-bar">
+                                    <div class="stat-bar-fill defense"> </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            </div>
 
         </section>
         <button id="load-button">Load more...</button>

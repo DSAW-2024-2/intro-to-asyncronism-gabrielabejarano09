@@ -5,6 +5,9 @@ const search_button_id = document.getElementById('search-button-id');
 const search_form_name = document.getElementById('search-form-name');
 const search_form_id = document.getElementById('search-form-id');
 const end_page = document.getElementById('end-page');
+const sectionCards = document.querySelector('.section-cards');
+const modal = document.getElementById('modal-card');
+const closeModal = document.getElementById('close-modal');
 let countCards = 21;
 
 chargePage();
@@ -15,12 +18,10 @@ load_button.addEventListener("click", function () {
         duplicateCard(21);
         changeContentCards();
         countCards += 21;
+        addEventListenersToCards();
     }
 
 });
-
-
-
 
 search_form_name.addEventListener('submit', async function (event) {
     event.preventDefault();
@@ -28,12 +29,12 @@ search_form_name.addEventListener('submit', async function (event) {
     const name = document.getElementById('name-form').value;
 
     if (name) {
-        await chargeSearchedByName(name); 
+        await chargeSearchedByName(name);
     }
 
 });
 
-search_form_id.addEventListener('submit', function (event)  {
+search_form_id.addEventListener('submit', function (event) {
     event.preventDefault();
 
 
@@ -42,7 +43,7 @@ search_form_id.addEventListener('submit', function (event)  {
 
 
 
-    if ( !isNaN(range1) && !isNaN(range2)) {
+    if (!isNaN(range1) && !isNaN(range2)) {
         removeElements();
         for (let i = range1; i <= range2; i++) {
             chargeSearchedByOneId(i);
@@ -65,6 +66,99 @@ search_form_id.addEventListener('submit', function (event)  {
 
 back_button.addEventListener('click', function () {
     location.reload();
+});
+
+
+section.addEventListener("click", function (event) {
+    const card = event.target.closest('.card');
+    if (!card) return;
+    const cardNumber = card.querySelector('#textCardNumber').textContent;
+    const cardName = card.querySelector('#textName').textContent;
+    const cardWeight = card.querySelector('#textWeight').textContent;
+    const cardImageSrc = card.querySelector('#cardImage').src;
+
+    const cardTypes = [];
+    const typeSquares = card.querySelectorAll('.type-square');
+    typeSquares.forEach(el => {
+        cardTypes.push(el.textContent);
+    });
+
+    document.getElementById('modalTextCardNumber').textContent = cardNumber;
+    document.getElementById('modalTextName').textContent = cardName;
+    document.getElementById('modalTextWeight').textContent = cardWeight;
+    document.getElementById('modalCardImage').src = cardImageSrc;
+
+    const modalTypeContainer = document.getElementById('modalTypeContainer');
+    modalTypeContainer.innerHTML = '';
+    cardTypes.forEach(type => {
+        const typeSquare = document.createElement('div');
+        typeSquare.classList.add('type-square');
+        typeSquare.textContent = type;
+        typeSquare.style.backgroundColor = returnColor(type);
+        modalTypeContainer.appendChild(typeSquare);
+    });
+
+    const pokemonId = parseInt(cardNumber.replace('#', ''), 10);
+    const statsUrl = `https://pokeapi.co/api/v2/pokemon/${pokemonId}`;
+
+    fetch(statsUrl)
+        .then(response => response.json())
+        .then(data => {
+
+            const pokemonHeight = data.height; 
+            const formattedHeight = (pokemonHeight / 10); 
+
+            
+            const heightElement = document.getElementById('modalTextHeight');
+            heightElement.textContent = `${formattedHeight} m`;
+
+
+            const hpStat = data.stats.find(stat => stat.stat.name === 'hp').base_stat;
+            const attackStat = data.stats.find(stat => stat.stat.name === 'attack').base_stat;
+            const defenseStat = data.stats.find(stat => stat.stat.name === 'defense').base_stat;
+            const hpBar = document.querySelector('.stat-bar-fill.hp');
+            const attackBar = document.querySelector('.stat-bar-fill.attack');
+            const defenseBar = document.querySelector('.stat-bar-fill.defense');
+
+            console.log('hpBar:', hpBar);
+            console.log('attackBar:', attackBar);
+            console.log('defenseBar:', defenseBar);
+
+            if (hpBar && attackBar && defenseBar) {
+                hpBar.style.width = `${hpStat}%`;
+                attackBar.style.width = `${attackStat}%`;
+                defenseBar.style.width = `${defenseStat}%`;
+            } else {
+                console.error("One or more stat bars are not found in the DOM");
+            }
+
+
+        })
+        .catch(error => {
+            console.error('Error fetching the Pokémon stats:', error);
+        });
+
+
+
+    modal.style.display = 'flex';
+});
+
+closeModal.addEventListener('click', () => {
+    modal.style.display = 'none';
+    const hpBar = document.querySelector('.stat-bar-fill.hp');
+    const attackBar = document.querySelector('.stat-bar-fill.attack');
+    const defenseBar = document.querySelector('.stat-bar-fill.defense');
+    hpBar.style.width = `${0}%`;
+    attackBar.style.width = `${0}%`;
+    defenseBar.style.width = `${0}%`;
+
+});
+
+
+window.addEventListener('click', (event) => {
+    if (event.target === modal) {
+        modal.style.display = 'none';
+    }
 });
 
 function removeElements() {
