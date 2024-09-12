@@ -8,9 +8,13 @@ const end_page = document.getElementById('end-page');
 const sectionCards = document.querySelector('.section-cards');
 const modal = document.getElementById('modal-card');
 const closeModal = document.getElementById('close-modal');
+const button_left = document.getElementById("button-left");
+const button_right = document.getElementById("button-right");
 let countCards = 21;
+let countImages = 0;
 
 chargePage();
+button_left.disabled = true;
 
 
 load_button.addEventListener("click", function () {
@@ -105,10 +109,10 @@ section.addEventListener("click", function (event) {
         .then(response => response.json())
         .then(data => {
 
-            const pokemonHeight = data.height; 
-            const formattedHeight = (pokemonHeight / 10); 
+            const pokemonHeight = data.height;
+            const formattedHeight = (pokemonHeight / 10);
 
-            
+
             const heightElement = document.getElementById('modalTextHeight');
             heightElement.textContent = `${formattedHeight} m`;
 
@@ -151,7 +155,9 @@ closeModal.addEventListener('click', () => {
     hpBar.style.width = `${0}%`;
     attackBar.style.width = `${0}%`;
     defenseBar.style.width = `${0}%`;
-    heightElement.textContent = "";
+    heightElement.textContent = " ";
+    countImages=0;
+    button_left.disabled = true;
 });
 
 
@@ -160,6 +166,47 @@ window.addEventListener('click', (event) => {
         modal.style.display = 'none';
     }
 });
+
+button_right.addEventListener("click", async function () {
+    const cardNumberElement = document.getElementById('modalTextCardNumber');
+    const cardNumberText = cardNumberElement.textContent;
+    const pokemonId = parseInt(cardNumberText.replace('#', ''), 10);
+
+    images = await getPokemonImages(pokemonId);
+
+
+    const modalImage = document.getElementById('modalCardImage'); 
+
+    
+    if (countImages < images.length - 1) {
+        countImages++;
+        modalImage.src = images[countImages]; 
+        checkImagesPlaced(); 
+    }
+});
+
+button_left.addEventListener("click", async function () {
+    const cardNumberElement = document.getElementById('modalTextCardNumber');
+    const cardNumberText = cardNumberElement.textContent;
+    const pokemonId = parseInt(cardNumberText.replace('#', ''), 10);
+
+
+    images = await getPokemonImages(pokemonId);
+
+    const modalImage = document.getElementById('modalCardImage');
+
+    if (countImages > 0) {
+        countImages--;
+        modalImage.src = images[countImages];
+        checkImagesPlaced(); 
+    }
+});
+function checkImagesPlaced() {
+    button_left.disabled = countImages === 0;
+    button_right.disabled = countImages === images.length - 1;
+}
+
+
 
 function removeElements() {
 
